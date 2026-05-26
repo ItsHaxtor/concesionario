@@ -1,0 +1,78 @@
+
+@startuml
+
+class Consecionario{
+    -String nombre
+    -String direccion
+    -String telefono
+    + cliente()
+    + vendedor()
+
+
+}
+interface Cargable{
+    + cargar(double: peso)
+    + descargar(double: peso)
+}
+abstract class Vehículo{
+    -String codUnico
+    -int plazas
+    -String color
+    -String modelo
+    -int año
+    -int numLlantas
+    - boolean disponible
+    +encender()
+    +frenar()
+    +acelerar()
+    +apagar()
+    + setDisponible(boolean: disponible)
+    + toStringEspesifico()
+    + toStringGeneral()
+}
+class Camioneta{
+    -double capacidadValde
+}
+class Motocicleta{
+    -String tipoManubrio
+    +levantarAsiento()
+
+}
+class Automovil{
+    -boolean convertible;
+    +isConvertible()
+
+}
+class Camión{
+    - int capCarga
+    + levantarCabina()
+
+}
+abstract class menu{
+    - int opcion
+    + mostrarMenuVendedor(Scanner : input)
+    + mostrarMenuCliente(Scanner : input)
+}
+abstract class Listas{
+    - ArrayList<Vehículo> inventario_vehiculos
+    +addVehiculo(Vehículo: vehiculo)
+    +quitarVehiculo()
+    +ComprarVehiculo()
+    + listaVehiculos_especificos()
+    + listaVehiculos_posiciones()
+    - generarCodigoUnico()
+}
+'Asociaciones
+
+Vehículo <|-- Camioneta
+Vehículo <|-- Motocicleta
+Vehículo <|-- Automovil
+Vehículo <|-- Listas
+Vehículo <|-- Camión
+Cargable <|.. Camioneta
+Cargable <|.. Camión
+menu <|-- Consecionario
+menu --|> Listas
+
+
+@enduml
